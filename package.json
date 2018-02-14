@@ -1,0 +1,40 @@
+{
+  "name": "poly-react",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx-source": "^6.22.0",
+    "babel-preset-expo": "^4.0.0",
+    "flow-bin": "^0.65.0",
+    "jest-expo": "^25.1.0",
+    "react-native-scripts": "^1.11.1",
+    "react-scripts": "1.1.1",
+    "react-test-renderer": "16.0.0"
+  },
+  "dependencies": {
+    "expo": "^23.0.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-native": "^0.50.3",
+    "react-native-web": "^0.4.0",
+    "react-router": "^4.2.0",
+    "react-router-native": "^4.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "web": "react-scripts start",
+    "build-web": "react-scripts build",
+    "test-web": "react-scripts test --env=jsdom",
+    "eject-web": "react-scripts eject",
+    "native": "react-native-scripts start",
+    "eject-native": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test-native": "node node_modules/jest/bin/jest.js --watch",
+    "test": "npm run test-web && npm run test-native"
+  }
+}
