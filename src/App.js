@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
-import {View, Text, Image, Platform, BackHandler} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Platform,
+  BackHandler
+} from 'react-native';
 import logo from './logo.png'
+import { 
+  MemoryRouter as NativeRouter,
+  Route,
+} from 'react-router';
+import {Router} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
 
-import { Router as WebRouter, Route, } from 'react-router';
-import { NativeRouter } from 'react-router-native';
-
-if(Platform == "web") {
-  Router = WebRouter;
+let TheRouter = Router;
+if(Platform.OS === "web") {
+  TheRouter = Router;
 } else {
-  Router = NativeRouter;
+  TheRouter = NativeRouter;
 }
 
 class StartPage extends React.Component {
 constructor(props) {
   super(props)
-  if(Platform == "web") {} else {
+  this.browserHistory;
+  if(Platform.OS === "web") {
+    this.browserHistory = createBrowserHistory();
+  } else {
     BackHandler.addEventListener('hardwareBackPress', () => {
       this.props.history.push('/')
       return true; //prevent app close
@@ -49,11 +62,11 @@ const LogoPage = props => <View>
 
 class TheApp extends Component {
   render() {
-    return (<Router><View>
+    return (<TheRouter history={this.browserHistory}><View>
       <Route exact path="/" component={HomePage} />
       <Route exact path="/logo" component={LogoPage} />
       <Route exact path="/start" component={StartPage} />
-    </View></Router>);
+    </View></TheRouter>);
   }
 }
 
